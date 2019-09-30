@@ -10,8 +10,9 @@ export default {
   },
   editTask(state, task) {
     var tasks = state.tasks
+    console.log(tasks)
     tasks.splice(tasks.indexOf(task), 1)
-    state.tasks = tasksstate.newTask = task.body
+    state.tasks = state.newTask = task.body
   },
   removeTask(state, task) {
     var tasks = state.tasks

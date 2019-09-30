@@ -1,5 +1,5 @@
 export default {
-  getTask(state, task) {
+  getTask({commit}, task) {
     commit('getTask', task)
   },
   addTask({commit}) {
