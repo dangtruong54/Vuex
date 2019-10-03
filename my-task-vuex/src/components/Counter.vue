@@ -1,11 +1,11 @@
 <template>
   <div class="counter">
     <!--goi state boi: $store.state.nameState-->
-    Clicked: {{ $store.state.count }} times, count is {{ evenOrOdd }}.
+    Clicked: {{ $store.state.count }} times, count is {{ test }}.
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementOdd">Increment if odd</button>
-    <button @click="decrementEven">Decrement if even</button>
+    <button @click="incrementAsync">Increment Async</button>
   </div>
 </template>
 
@@ -14,10 +14,15 @@
   import { mapState } from 'vuex'
   export default {
     name: "Counter",
-    computed:
-      mapGetters([
-      'evenOrOdd'
-    ]),
+    computed: {
+      test() {
+        return this.$store.getters.evenOrOdd
+      }
+      //   mapGetters([
+      //   'evenOrOdd'
+      // ]),
+    },
+
 
     // methods: mapActions([
     //     'increment',
@@ -27,7 +32,8 @@
       increment(e) {
         e.preventDefault();
         // dispatch call action -> action call mutation -> update state
-        this.$store.dispatch('increment')
+        // this.$store.dispatch('increment')
+        this.$store.commit('increment')
       },
       decrement(e) {
         e.preventDefault();
@@ -37,9 +43,9 @@
         e.preventDefault();
         this.$store.dispatch('incrementOdd')
       },
-      decrementEven(e) {
+      incrementAsync(e) {
         e.preventDefault();
-        this.$store.dispatch('decrementEven')
+        this.$store.dispatch('incrementAsync')
       }
     }
   }
