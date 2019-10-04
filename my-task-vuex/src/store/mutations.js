@@ -1,20 +1,19 @@
 // Khai bao action cho store
-// chu y ko dc viet export const mutations = {..}
-export default {
-  increment(state) {
+export const increment = state => {
     state.count ++
-  },
-  decrement(state) {
+    state.history.push('increment')
+  }
+export const decrement = state => {
     state.count --
-  },
-  changeCountIncrement(state) {
+    state.history.push('decrement')
+  }
+export const changeCountIncrement = state => {
     if(state.count % 2 === 0) {
       state.count ++
     }
-  },
-  changeCountDecrement(state) {
+  }
+export const changeCountDecrement = state => {
     if(state.count % 2 !== 0) {
       state.count --
     }
-  },
-}
+  }

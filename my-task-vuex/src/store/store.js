@@ -1,21 +1,33 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as getters from './getters'
+import * as actions from './actions'
+import * as mutations from './mutations'
 
 Vue.use(Vuex)
 
-import getters from './getters'
-import mutations from './mutations'
-import actions from './actions'
-
-
-// Khai bao state cho store
 const state = {
-  count: 0
+  count: 0,
+  history: []
 }
 
 export default new Vuex.Store({
   state,
   getters,
-  mutations,
-  actions
+  actions,
+  mutations
 })
+
+// if (module.hot) {
+//   module.hot.accept([
+//     './getters',
+//     './actions',
+//     './mutations'
+//   ], () => {
+//     store.hotUpdate({
+//       getters: require('./getters'),
+//       actions: require('./actions'),
+//       mutations: require('./mutations')
+//     })
+//   })
+// }

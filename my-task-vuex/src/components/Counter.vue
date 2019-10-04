@@ -1,11 +1,14 @@
 <template>
   <div class="counter">
     <!--goi state boi: $store.state.nameState-->
-    Clicked: {{ $store.state.count }} times, count is {{ test }}.
+    Clicked: {{ $store.state.count }} times, count is {{ evenOrOdd }}.
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementOdd">Increment if odd</button>
     <button @click="incrementAsync">Increment Async</button>
+    <div>
+      <div>Recent History (last 5 entries): {{ recentHistory }}</div>
+    </div>
   </div>
 </template>
 
@@ -14,14 +17,18 @@
   import { mapState } from 'vuex'
   export default {
     name: "Counter",
-    computed: {
-      test() {
-        return this.$store.getters.evenOrOdd
-      }
-      //   mapGetters([
-      //   'evenOrOdd'
-      // ]),
-    },
+    computed:
+      // test() {
+      //   return this.$store.getters.evenOrOdd
+      // },
+      // recentHistory() {
+      //   return this.$store.getters.recentHistory
+      // }
+        mapGetters([
+        'evenOrOdd',
+        'recentHistory'
+      ]),
+
 
 
     // methods: mapActions([
